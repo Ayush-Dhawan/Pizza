@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
 import CartItem from './CartItem';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { getQuantityById, getTotalItems } from './CartSlice';
+import { clearCart} from './CartSlice';
 
 // const fakeCart = [
 //   {
@@ -33,6 +34,7 @@ function Cart() {
   const cart = useSelector(state => state.cart.cart)
   const username = useSelector(state => state.user.username)
   const noPizzas = useSelector(getTotalItems)
+  const dispatch = useDispatch();
 
  
   return (
@@ -46,7 +48,9 @@ function Cart() {
 
       {noPizzas ? <div className='mt-6 space-x-4'>
         <Button type="primary" to="/order/new">Order pizzas</Button>
-        <Button type="secondary">Clear cart</Button>
+        <Button type="secondary" onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </Button>
       </div> : <p className='text-xl font-bold h-full w-full flex items-center justify-center'>Hey {username}, your cart is empty</p>}
     </div>
   );
