@@ -41,6 +41,9 @@ const router = createBrowserRouter([
         loader: orderLoader,
         errorElement: <Error />,
         action: UpdateOrderAction,
+      },
+      {
+        basename: '/Pizza', // Replace with your actual subdirectory
       }
     ]
   }
