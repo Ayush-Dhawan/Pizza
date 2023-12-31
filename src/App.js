@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         action: UpdateOrderAction,
       },
       {
-        basename: '/Pizza', // Replace with your actual subdirectory
+        basename: '/pizza', // Replace with your actual subdirectory
       }
     ]
   }
